@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clases y objetos</title>
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+  <article>
+    <header>
+      <section>
+        <h1>CLASES Y OBJETOS</h1>
+        <P>
+        <ul>
+          Una clase se compone de atributos y de métodos.
+          <li>Atributos: son las características de los objetos</li>
+          <li>Métodos: son las acciones que pueden realizar los objetos. Fuera de una clase se las llama funciones,
+            asociadas a una clase se las llama métodos</li>
+          <li>Instanciar una clase: una vez definida la clase, se pueden crear distintos objetos, eso es instanciar.
+          </li>
+        </ul>
+        </P>
+      </section>
+      <section>
+        <h2>Diagrama básico de una clase.</h2>
+        <p>
+        <ul>
+          <li>Clase: Persona</li>
+          <li>Atributos: nombre, apellido, celular, etc.</li>
+          <li>Métods: agregar_nombre(), mostrar_persona(), etc.</li>
+          <li>Instancias de clase:</li>
+          <ol>
+            <li>Objeto1: nombre=Martina, apellido=González, etc.</li>
+            <li>Objeto2:nombre=Juan, apellido=Perez, etc.</li>
+          </ol>
+        </ul>
+        </p>
+      </section>
+    </header>
+    <main>
+      <section>
+        <h1>Creacion de clases y objetos</h1>
+        <pre>
+          <code>
+<strong>Ejemplo:</strong><br>
+# Definicion de una clase
+class Persona:
+
+    # Definición de los métodos
+    def inicializar_persona(self, nombre, apellido):
+        # Creamos los atributos de la clase
+        self.nombre = nombre
+        self.apellido = apellido
+
+    def mostrar_persona(self):
+        print(f'''Persona: 
+        Nombre: {self.nombre}
+        Apellido: {self.apellido}''')
+
+# Creacion de objetos
+if __name__ == '__main__':
+    # Creacion de un primer objeto
+    persona1 = Persona()  # Crea un objeto vacio en memoria
+    persona1.inicializar_persona('Layla', 'Acosta')
+    persona1.mostrar_persona()
+
+    # Creamos un segundo objeto
+    persona2 = Persona() # Crea un objeto vacio en memoria
+    persona2.inicializar_persona('Ian', 'Sánchez')
+    persona2.mostrar_persona()
+
+# Resultado en terminal =2 objetos de clase
+Persona: 
+        Nombre: Layla
+        Apellido: Acosta
+Persona:
+        Nombre: Ian
+        Apellido: Sánchez
+          </code>
+        </pre>
+      </section>
+      <section>
+        <h1>Constructores en Python.</h1>
+        <p>
+          En Python, el constructor de una clase se define mediante el método especial __init__. Este método se ejecuta
+          automáticamente cuando se crea una nueva instancia de la clase y generalmente se utiliza para inicializar los
+          atributos del objeto (se lo conoce como un método mágico o de tipo dunder).
+        </p>
+        <h2>Sintaxis de un constructor</h2>
+        <pre><code>
+class NombreDeLaClase():
+        def__init__(self, parametro1, parametro2):
+            self.parametro1 = parametro1
+            self.parametro2 = parametro2
+        </code></pre>
+        <h3>Ejemplo de constructor</h3>
+        <pre><code>
+# Definicion de una clase
+class Persona:
+
+    #  Constructor
+    def __init__(self, nombre, apellido):
+        # Creamos los atributos de la clase
+        self.nombre = nombre
+        self.apellido = apellido
+
+    # Método mostrar_persona    
+    def mostrar_persona(self):
+        print(f'''Persona: 
+        Nombre: {self.nombre}
+        Apellido: {self.apellido}''')
+
+
+# Creacion de objetos
+if __name__ == '__main__':
+    # Creacion de un primer objeto
+    persona1 = Persona('Layla', 'Acosta')  # Crea un objeto vacio en memoria
+    persona1.mostrar_persona()
+
+    # Creamos un segundo objeto
+    persona2 = Persona('Ian', 'Sánchez')  # Crea un objeto vacio en memoria
+    # persona2.inicializar_persona('Ian', 'Sánchez')
+    persona2.mostrar_persona()
+        </code></pre>
+      </section>
+      <section>
+        <h2>Dirección de Memoria</h2>
+        <p>Cuando creamos un objeto (instancia de clase) se manda a llamar el constructor de clase (método __init__) y
+          se guarda un espacio en la memoria. <br> Este constructor se puede utilizar para crear atributos y asignarle
+          sus
+          valores. <br>
+        </p>
+        <pre><code>
+<strong>Ejemplo:</strong><br>
+# Definicion de una clase
+class Persona:
+
+    #  Constructor
+    def __init__(self, nombre, apellido):
+        # Creamos los atributos de la clase
+        self.nombre = nombre
+        self.apellido = apellido
+
+    def mostrar_persona(self):
+        print(f'''Persona: 
+        Nombre: {self.nombre}
+        Apellido: {self.apellido}''')
+        # Comprobamos que self apunta al mismo espacio de memoria que apuntan los objetos creados: persona1 y persona2
+        print(f'Dir. mem self: {id(self)}')
+        print(f'Dir. mem hex self: {hex(id(self))}')
+
+
+# Creacion de objetos
+if __name__ == '__main__':
+    # Creacion de un primer objeto
+    persona1 = Persona('Layla', 'Acosta')  # Crea un objeto vacio en memoria
+    persona1.mostrar_persona()
+
+    # Mandamos a imprimir la dirección de memoria a la que apunta el objeto persona1
+    print(f'Dir. mem persona1: {id(persona1)}')
+    print(f'Dir. mem hex persona1: {hex(id(persona1))}')
+
+    # Creamos un segundo objeto
+    persona2 = Persona('Ian', 'Sánchez') # Crea un objeto vacio en memoria
+    persona2.mostrar_persona()
+
+    print(f'Dir. mem persona2: {id(persona2)}')
+    print(f'Dir. mem hex persona2: {hex(id(persona2))}')
+
+# Salida en consola: el parámetro de self apunta al objeto que se ejecuta:
+
+Persona: 
+        Nombre: Layla
+        Apellido: Acosta
+Dir. mem self: 2309600975632
+Dir. mem hex self: 0x219bef21b10
+Dir. mem persona1: 2309600975632
+Dir. mem hex persona1: 0x219bef21b10
+Persona:
+        Nombre: Ian
+        Apellido: Sánchez
+Dir. mem self: 2309601205968
+Dir. mem hex self: 0x219bef59ed0
+Dir. mem persona2: 2309601205968
+Dir. mem hex persona2: 0x219bef59ed0
+  
+        </code></pre>
+      </section>
+      <section>
+        <h2>Flexibilidad de constructores</h2>
+        <p>
+          La flexibilidad de constructores en Python se refiere a las capacidades y opciones que ofrece el lenguaje para
+          definir y personalizar los constructores de clases, lo que permite inicializar objetos de manera flexible.
+          <br>
+          Si hay más de un constructores en una clase, Python únicamente toma el último.
+        <ul>
+          <li>Argumentos por defecto</li>
+          <pre><code>
+def __init__(self, operando1=None, operando2=None):
+    self.operando1 = operando1
+    self.operando2 = operando2
+
+def sumar(self):
+    resultado = self.operando1 + self.operando2
+    print(f'Resultado suma: {resultado}')
+
+def restar(self):
+    resultado = self.operando1 - self.operando2
+    print(f'Resultado resta: {resultado}')
+
+def multiplicar(self):
+    resultado = self.operando1 * self.operando2
+    print(f'Resultado multiplicación: {resultado}')
+
+def dividir(self):
+    resultado = self.operando1 / self.operando2
+    print(f'Resultado división: {resultado}')
+
+
+# Programa principal
+if __name__ == '__main__':
+    print('*** Ejemplo Clase Artimética ***')
+    
+    # Primer objeto
+    aritmetica1 = Aritmetica(5, 7)
+    print('Primer objeto')
+    aritmetica1.sumar()
+    aritmetica1.restar()
+    
+    # Segundo objeto
+    print('Segundo objeto')
+    aritmetica2 = Aritmetica(12, 16)
+    aritmetica2.sumar()
+    aritmetica2.restar()
+
+    # Tercer objeto
+    print('Tercer objeto')
+    aritmetica3 = Aritmetica(7)
+    aritmetica3.operando2 = 9
+    aritmetica3.sumar()
+
+    # Cuarto objeto
+    print('Cuarto objeto')
+    aritmetica4 = Aritmetica()
+    aritmetica4.operando1 = 2
+    aritmetica4.operando2 = 8
+    aritmetica4.sumar()
+
+    # Quinto objeto
+    print('Quinto objeto')
+    aritmetica5 = Aritmetica(operando2=4, operando1=3)
+    aritmetica5.sumar()
+            </code></pre>
+        </ul>
+        </p>
+
+      </section>
+      <section>
+        <h2>Encapsulamiento</h2>
+        <p>
+          El encapsulamiento en Python es un principio de programación orientada a objetos (POO) que se utiliza para
+          restringir el acceso directo a ciertos datos o métodos de una clase y permitir su manipulación solo a través
+          de
+          funciones específicas (como getters y setters). Esto ayuda a proteger la integridad de los datos y a ocultar
+          detalles internos de la implementación.
+
+          Aunque Python no tiene un mecanismo de acceso tan estricto como otros lenguajes (como private o protected en
+          Java o C++), ofrece ciertas convenciones y herramientas para implementar el encapsulamiento.
+        <ol>
+          <h3>Niveles de acceso:</h3>
+          <li>Público:
+            <ul>
+              <li>Los atributos y métodos son accesibles desde cualquier lugar.</li>
+              <li>Por convención, se declaran sin un prefijo especial.</li>
+              <li>Ejemplo:</li>
+              <pre><code>
+  class Persona:
+      def __init__(self, nombre):
+          self.nombre = nombre  # Atributo público
+  
+  p = Persona("Ana")
+  print(p.nombre)  # Output: Ana
+                </code></pre>
+            </ul>
+          </li>
+          <li>Protegido:
+            <ul>
+              <li>Indica que un atributo o método está destinado a usarse solo dentro de la clase y sus subclases.</li>
+              <li>Se marca con un guion bajo _ como prefijo (esto es solo una convención, no una restricción real).</li>
+              <li>Ejemplo:
+                <pre><code>
+  class Persona:
+      def __init__(self, nombre):
+          self._nombre = nombre  # Atributo protegido
+  
+      def _saludo(self):
+          return f"Hola, soy {self._nombre}"
+  
+  class Empleado(Persona):
+      def saludo_empleado(self):
+          return self._saludo() + " y trabajo aquí."
+  
+  e = Empleado("Luis")
+  print(e.saludo_empleado())  # Output: Hola, soy Luis y trabajo aquí.
+                </code></pre>
+              </li>
+            </ul>
+          </li>
+          <li>Privado:
+            <ul>
+              <li>Se utiliza para restringir completamente el acceso directo desde fuera de la clase.</li>
+              <li>Se logra utilizando un doble guion bajo __ como prefijo del atributo o método.</li>
+              <li>Python aplica name mangling para evitar el acceso directo, pero no lo hace completamente imposible.
+              </li>
+              <li>Ejemplo:
+                <pre><code>
+  class Persona:
+      def __init__(self, nombre):
+          self.__nombre = nombre  # Atributo privado
+  
+      def get_nombre(self):
+          return self.__nombre
+  
+  p = Persona("Ana")
+  print(p.get_nombre())  # Output: Ana
+  # print(p.__nombre)  # Error: AttributeError
+                </code></pre>
+              </li>
+            </ul>
+          </li>
+          <h3>Ejemplo unificado de cada nivel:</h3>
+          <pre><code>
+# Definimos la clase coche
+class Coche:
+
+    def __init__(self, marca, modelo, color):
+        self.marca = marca   # Atributo publico
+        self._modelo = modelo   # Atributo protegido
+        self.__color = color   # Atributo privado
+
+    def conducir(self):
+        print(f'''Conduciendo el coche:
+        Marca: {self.marca}
+        Modelo: {self._modelo}
+        Color: {self.__color}''')
+
+
+# Programa principal
+if __name__ == '__main__':
+    # Creacion de un primer coche
+    coche1 = Coche('Toyota', 'Yaris', 'Azul')
+    coche1.conducir()
+    # Como estamos fuera de la clase no deberiamos acceder a los atributos que no sean publicos
+    coche1.marca = 'Toyota 2'
+    coche1._modelo = 'Yaris 2'  # Esto no es una buena practica
+    coche1.__color = 'Azul 2'  # Se ignoró la modificacion porque es un atributo privado.
+    coche1._Coche__color = 'Azul 3'  # Se puede modificar, pero es una mala practica
+    coche1.conducir()
+          </code></pre>
+        </ol>
+        </p>
+      </section>
+      <section>
+        <h2>Métodos Get y Set</h2>
+        <p>
+          Los getters y setters son métodos que permiten acceder y modificar atributos privados de manera controlada.
+          Aunque puedes acceder directamente a los atributos de un objeto en Python (ya que el lenguaje permite acceso
+          directo a los atributos públicos), los getters y setters son útiles en casos donde deseas:
+        <ul>
+          <li>Proteger atributos: Restringir o validar los valores antes de asignarlos.</li>
+          <li>Encapsular lógica: Agregar lógica adicional al acceder o modificar atributos.</li>
+          <li>Controlar cambios futuros: Si más adelante decides cambiar la implementación de un atributo, puedes
+            hacerlo sin afectar el código externo que usa tu clase.</li>
+        </ul>
+        <h3>Ejemplo:</h3>
+        <pre><code>
+# Definimos la clase coche
+class Coche:
+
+    def __init__(self, marca, modelo, color):
+        self._marca = marca # Atributo protegido
+        self._modelo = modelo # Atributo protegido
+        self._color = color # Atributo protegido
+
+    def conducir(self):
+        print(f'''Conduciendo el coche:
+        Marca: {self._marca}
+        Modelo: {self._modelo}
+        Color: {self._color}''')
+        # como estamos dentro de la clase no es necesario utilizar los métodos get y set.
+
+    def get_marca(self):
+        return self._marca
+
+    def set_marca(self, marca):
+        self._marca = marca
+
+    def get_modelo(self):
+        return self._modelo
+
+    def set_modelo(self, modelo):
+        self._modelo = modelo
+
+    def get_color(self):
+        return self._color
+
+    def set_color(self, color):
+        self._color = color
+
+
+# Programa principal
+if __name__ == '__main__':
+    # Creacion de un primer coche
+    coche1 = Coche('Toyota', 'Yaris', 'Azul')
+    coche1.conducir()
+    # No deberiamos acceder desde fuera de la clase a los atributos que no sean publicos
+    coche1.set_marca('Toyota 2')
+    coche1.set_modelo('Yaris 2')
+    coche1.set_color('Azul 2')
+    coche1.conducir()
+        </code></pre>
+        </p>
+      </section>
+      <section>
+        <h3>Uso de @property</h3>
+        <p>
+          Python proporciona una forma más limpia y moderna de implementar getters y setters mediante el decorador
+          @property.
+        <pre><code>
+# Definimos la clase coche
+class Coche:
+
+    def __init__(self, marca, modelo, color):
+        self._marca = marca # Atributo protegido
+        self._modelo = modelo # Atributo protegido
+        self._color = color # Atributo protegido
+
+    def conducir(self):
+        print(f'''Conduciendo el coche:
+        Marca: {self._marca}
+        Modelo: {self._modelo}
+        Color: {self._color}''')
+
+    # def get_marca(self):
+    #     return self._marca
+
+    @property # Definir el metodo get de manera mas pythonica
+    def marca(self):
+        return self._marca
+
+    @marca.setter
+    def marca(self, marca):
+        self._marca = marca
+
+    @property
+    def modelo(self):
+        return self._modelo
+
+    @modelo.setter
+    def modelo(self, modelo):
+        self._modelo = modelo
+
+    @property
+    def color(self):
+        return self._color
+
+    @color.setter
+    def color(self, color):
+        self._color = color
+
+
+# Programa principal
+if __name__ == '__main__':
+    # Creacion de un primer coche
+    coche1 = Coche('Toyota', 'Yaris', 'Azul')
+    coche1.conducir()
+    # No deberiamos acceder a los atributos que no sean publicos
+    coche1.marca = 'Toyota 2'
+    coche1.modelo = 'Yaris 2'
+    coche1.color = 'Azul 2'
+    coche1.conducir()
+    # Atributo de marca del coche 1
+    coche1.marca = 'Toyota 3'
+    print(f'Atributo marca coche1: {coche1.marca}')
+
+          </code></pre>
+        </p>
+      </section>
+
+
+    </main>
+    <footer>
+    </footer>
+  </article>
+</body>
+
+</html>
