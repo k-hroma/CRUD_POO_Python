@@ -5,6 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clases y objetos</title>
+  <!-- Tema CSS para Prism -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <!-- Script base de Prism -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <!-- Componente para Python -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <style>
+    body {
+      min-height: 15000px;
+    }
+  </style>
+  <style>
+    pre {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      color: #2208e3;
+    }
+  </style>
   <link rel="stylesheet" href="">
 </head>
 
@@ -48,7 +73,7 @@
       <section>
         <h1>Creacion de clases y objetos</h1>
         <pre>
-          <code>
+          <code class="language-python">
 <strong>Ejemplo:</strong><br>
 # Definicion de una clase
 class Persona:
@@ -96,14 +121,14 @@ Persona:
           Se lo conoce como un método mágico o de tipo <em>dunder</em>.
         </p>
         <h3>Sintaxis de un constructor</h3>
-        <pre><code>
+        <pre><code class="language-python">
 class NombreDeLaClase():
         def__init__(self, parametro1, parametro2):
             self.parametro1 = parametro1
             self.parametro2 = parametro2
         </code></pre>
         <h3>Ejemplo de constructor</h3>
-        <pre><code>
+        <pre><code class="language-python">
 # Definicion de una clase
 class Persona:
 
@@ -139,7 +164,7 @@ if __name__ == '__main__':
           sus valores. <br> A cada objeto Python le asigna un lugar en la memoria. Cuando utilizamos esa instancia de
           clase se hace referencia al lugar en la memoria que ocupa.
         </p>
-        <pre><code>
+        <pre><code class="language-python">
 <strong>Ejemplo:</strong><br>
 # Definicion de una clase
 class Persona:
@@ -204,7 +229,7 @@ Dir. mem hex persona2: 0x219bef59ed0
           Si hay más de un constructores en una clase, Python únicamente toma el último.
         <ul>
           <li>Argumentos por defecto</li>
-          <pre><code>
+          <pre><code class="language-python">
 def __init__(self, operando1=None, operando2=None):
     self.operando1 = operando1
     self.operando2 = operando2
@@ -282,7 +307,7 @@ if __name__ == '__main__':
               <li>Los atributos y métodos son accesibles desde cualquier lugar.</li>
               <li>Por convención, se declaran sin un prefijo especial.</li>
               <li>Ejemplo:</li>
-              <pre><code>
+              <pre><code class="language-python">
   class Persona:
       def __init__(self, nombre):
           self.nombre = nombre  # Atributo público
@@ -297,7 +322,7 @@ if __name__ == '__main__':
               <li>Indica que un atributo o método está destinado a usarse solo dentro de la clase y sus subclases.</li>
               <li>Se marca con un guion bajo _ como prefijo (esto es solo una convención, no una restricción real).</li>
               <li>Ejemplo:
-                <pre><code>
+                <pre><code class="language-python">
   class Persona:
       def __init__(self, nombre):
           self._nombre = nombre  # Atributo protegido
@@ -322,7 +347,7 @@ if __name__ == '__main__':
               <li>Python aplica name mangling para evitar el acceso directo, pero no lo hace completamente imposible.
               </li>
               <li>Ejemplo:
-                <pre><code>
+                <pre><code class="language-python">
   class Persona:
       def __init__(self, nombre):
           self.__nombre = nombre  # Atributo privado
@@ -338,7 +363,7 @@ if __name__ == '__main__':
             </ul>
           </li>
           <h3>Ejemplo unificado de cada nivel:</h3>
-          <pre><code>
+          <pre><code class="language-python">
 # Definimos la clase coche
 class Coche:
 
@@ -382,7 +407,7 @@ if __name__ == '__main__':
             hacerlo sin afectar el código externo que usa tu clase.</li>
         </ul>
         <h3>Ejemplo:</h3>
-        <pre><code>
+        <pre><code class="language-python">
 # Definimos la clase coche
 class Coche:
 
@@ -452,7 +477,7 @@ if __name__ == '__main__':
             </ul>
           </li>
         </ol>
-        <pre><code>
+        <pre><code class="language-python">
 <strong>Prueba</strong>
 class Coche:
     def __init__(self, marca=None):
@@ -488,7 +513,7 @@ print(coche1.get_marca())
           <br>
           Cuando usas @property, estás creando una "propiedad" en la clase. Esta propiedad actúa como un atributo, pero
           su valor es controlado por las funciones getter y setter detrás de escena.
-        <pre><code>
+        <pre><code class="language-python">
 # Definimos la clase coche
 class Coche:
 
@@ -580,7 +605,7 @@ if __name__ == '__main__':
             el nombre del atributo en tiempo de ejecución.</li>
           <li>Útil en situaciones en las que no conoces de antemano los nombres de los atributos y los decides sobre la
             marcha.</li>
-          <pre><code>
+          <pre><code class="language-python">
 setattr(objeto1, "atributo_dinamico", 'Valor dinámico')
 print(objeto1.atributo_dinamico)  # 'Valor dinámico'
             </code></pre>
@@ -594,7 +619,7 @@ print(objeto1.atributo_dinamico)  # 'Valor dinámico'
         <ul>
           <li>Es más explícita y directa. El nombre del atributo es conocido en el momento de escribir el código.</li>
           <li>Es más legible y comprensible, especialmente cuando los nombres de los atributos son fijos.</li>
-          <pre><code>
+          <pre><code class="language-python">
 coche1.nuevo_atributo2 = 'Valor nuevo atributo 2'
 print(coche1.nuevo_atributo2)  # 'Valor nuevo atributo 2'
           </code></pre>
@@ -604,7 +629,7 @@ print(coche1.nuevo_atributo2)  # 'Valor nuevo atributo 2'
             directamente.</li>
         </ul>
         </p>
-        <pre><code>
+        <pre><code class="language-python">
 <strong>Ejemplo básico:</strong>
 class Persona:
     def __init__(self, nombre):
@@ -623,7 +648,7 @@ print(f"{p.nombre} tiene {p.edad} años.")  # Ana tiene 25 años.
 q = Persona("Luis")
 # print(q.edad)  # Esto dará un error AttributeError
         </code></pre>
-        <pre><code>
+        <pre><code class="language-python">
 <strong>Ejemplo:</strong>
 # Definimos la clase coche
 class Coche:
@@ -729,7 +754,7 @@ if __name__ == '__main__':
               </ul>
             </li>
             <li>Ejemplo:
-              <pre><code>
+              <pre><code class="language-python">
 class Persona:
 
 atributo_clase = 0
@@ -781,7 +806,7 @@ if __name__ == '__main__':
               otras instancias de la misma clase.</li>
             <li>Ejemplo básico:
               <pre>
-                  <code>
+                  <code class="language-python">
 class Persona:
 def __init__(self, nombre, edad):
     self.nombre = nombre  # Atributo de instancia
@@ -808,7 +833,7 @@ print(persona2.edad)  # Output: 30 (sin cambios)
           <h3>
             Ejemplo_contador_personas:
           </h3>
-          <pre><code>
+          <pre><code class="language-python">
 class Persona:
     # Atributo clase
     contador_personas = 0
@@ -850,7 +875,7 @@ if __name__ == '__main__':
           <li>Uso común: Se utilizan para crear métodos que afectan a la clase en su conjunto o para trabajar con datos
             relacionados con la clase y no con una instancia.</li>
           <li>Ejemplo básico:
-            <pre><code>
+            <pre><code class="language-python">
 class MiClase:
 atributo_clase = "valor por defecto"
 
@@ -863,7 +888,7 @@ print(MiClase.metodo_clase())  # Output: Este es un método de clase. El atribut
             </code></pre>
           </li>
           <li>Ejemplo más complejo:
-            <pre><code>
+            <pre><code class="language-python">
 class Persona:
 # Atributo clase
 contador_personas = 0
@@ -913,7 +938,6 @@ if __name__ == '__main__':
               instancia.</li>
             <li>Métodos estáticos: No reciben automáticamente ningún argumento (self o cls) y son independientes tanto
               de instancias como de clases. Se definen con @staticmethod.</li>
-            <li></li>
           </ul>
         </div>
       </section>
